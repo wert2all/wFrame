@@ -17,11 +17,13 @@ class Get
     /**
      * Get constructor.
      * @param string $request
+     * @param bool $isEncodes
      */
-    public function __construct($request = null)
+    public function __construct($request = null, $isEncodes = false)
     {
         $this->readData(
-            $this->splitRequest($this->cleanRequest($request))
+            $this->splitRequest($this->cleanRequest($request)),
+            $isEncodes
         );
     }
 
@@ -70,13 +72,18 @@ class Get
 
     /**
      * @param array $request
+     * @param bool $isEncodes
      */
-    protected function readData(array  $request = array())
+    protected function readData(array  $request = array(), $isEncodes = false)
     {
         foreach ($request as $value) {
             $keyValue = explode("=", $value);
             if (isset($keyValue[1])) {
-                $this->data[$keyValue[0]] = $keyValue[1];
+                $param = $keyValue[1];
+                if (!$isEncodes) {
+                    $param = urldecode($param);
+                }
+                $this->data[$keyValue[0]] = $param;
             }
         }
     }

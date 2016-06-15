@@ -19,7 +19,7 @@ class GetTest extends PHPUnit_Framework_TestCase
     public function testToString($request)
     {
         $get = new Get($request);
-        $request=preg_replace("/[? ]/mi", "", $request);
+        $request = preg_replace("/[? ]/mi", "", $request);
         $this->assertEquals($request, $get->toString());
     }
 
@@ -57,5 +57,11 @@ class GetTest extends PHPUnit_Framework_TestCase
     {
         $get = new Get();
         $this->assertEquals("", $get->toString());
+    }
+
+    public function testEncoded()
+    {
+        $get = new Get("?test=%D0%BE%D0%BE%D0%B2%D1%8B%D0%BB%D0%B2%D0%BE%D1%8B%D0%B2%D0%BE%20");
+        $this->assertEquals("оовылвоыво ", $get->getValue("test"));
     }
 }
