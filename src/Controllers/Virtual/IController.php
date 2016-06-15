@@ -8,9 +8,8 @@
 
 namespace wert2all\wFrame\Controllers\Virtual;
 
-use wert2all\electro_api\Framework\Exception\ControllerException;
-use wert2all\electro_api\Framework\Request;
-use wert2all\electro_api\Framework\Request\IRequest;
+use wert2all\wFrame\Exception\ControllerException;
+use wert2all\wFrame\Request\IRequest;
 
 interface IController
 {

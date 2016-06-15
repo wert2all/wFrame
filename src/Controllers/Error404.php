@@ -8,11 +8,10 @@
 
 namespace wert2all\wFrame\Controllers;
 
-use wert2all\electro_api\Framework\Controllers\Virtual\AbstractController;
-use wert2all\electro_api\Framework\Controllers\Virtual\IController;
-use wert2all\electro_api\Framework\Exception\ControllerException;
-use wert2all\electro_api\Framework\Request;
-use wert2all\electro_api\Framework\Request\IRequest;
+use wert2all\wFrame\Controllers\Virtual\AbstractController;
+use wert2all\wFrame\Controllers\Virtual\IController;
+use wert2all\wFrame\Exception\ControllerException;
+use wert2all\wFrame\Request\IRequest;
 
 class Error404 extends AbstractController implements IController
 {
@@ -28,7 +27,6 @@ class Error404 extends AbstractController implements IController
 
     /**
      * @param IRequest $request
-     * @param \Throwable $exception
      * @return void
      * @throws ControllerException
      */
