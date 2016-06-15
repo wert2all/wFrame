@@ -10,9 +10,9 @@ namespace wert2all\wFrame;
 
 use ArrayIterator;
 use ArrayObject;
-use wert2all\electro_api\Framework\Controllers\Virtual\AbstractExceptionController;
-use wert2all\electro_api\Framework\Controllers\Virtual\IController;
-use wert2all\electro_api\Framework\Request\IRequest;
+use wert2all\wFrame\Controllers\Virtual\AbstractExceptionController;
+use wert2all\wFrame\Controllers\Virtual\IController;
+use wert2all\wFrame\Request\IRequest;
 
 class Route
 {
