@@ -1,0 +1,46 @@
+{
+  "name": "wert2all/wFrame",
+  "description": "",
+  "keywords": [
+    "framework"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "wert2all",
+      "email": "wert2all@gmail.com",
+      "homepage": "http://rpm.kiev.ua/"
+    }
+  ],
+  "version": "1.0",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/wert2all/phpDataValue.git"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit-mock-objects": "@stable",
+    "phpunit/phpunit": "@stable",
+    "squizlabs/php_codesniffer": "@stable"
+  },
+  "archive": {
+    "exclude": [
+      "/tests"
+    ]
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "wert2all/phpDataValue": ">=1.0"
+  }
+}
