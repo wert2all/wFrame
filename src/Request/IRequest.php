@@ -14,5 +14,11 @@ interface IRequest
     /**
      * @return string
      */
-    public function getBaseUrl();
+    public function getBase();
+
+    /**
+     * @param mixed $index
+     * @return mixed
+     */
+    public function getParameter($index);
 }
