@@ -10,6 +10,7 @@ namespace wert2all\wFrame\Tests\Request;
 
 use wert2all\wFrame\Request\Http\ServerData;
 use wert2all\wFrame\Request\HttpRequest;
+use wert2all\wFrame\Tests\TestHelpers\WebServer;
 
 class HttpRequestTest extends \PHPUnit_Framework_TestCase
 {
@@ -61,10 +62,11 @@ class HttpRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testGettingParameters()
     {
-        $serverData = $this->defaultData("/pub/index/xcxc/cxxcxcxc/?fdfd=1/pub/");
-        $request = new HttpRequest($serverData);
-        $this->assertEquals("index", $request->getParameter(0));
-        $this->assertEquals("cxxcxcxc", $request->getParameter(2));
+        $webServer = new WebServer();
+        $request = $webServer->getRequest("xcxc/cxxcxcxc/?fdfd=1/pub/");
+
+        $this->assertEquals("xcxc", $request->getParameter(0));
+        $this->assertEquals("cxxcxcxc", $request->getParameter(1));
         $this->assertEquals(null, $request->getParameter(20));
     }
 }
