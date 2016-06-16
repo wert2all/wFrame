@@ -95,8 +95,17 @@ class HttpRequest implements IRequest
     /**
      * @return string
      */
-    public function getBaseUrl()
+    public function getBase()
     {
         return implode("/", $this->baseArray->getArrayCopy());
+    }
+
+    /**
+     * @param mixed $index
+     * @return mixed
+     */
+    public function getParameter($index)
+    {
+        return isset($this->otherUrlArray[(int)$index]) ? $this->otherUrlArray[(int)$index] : null;
     }
 }

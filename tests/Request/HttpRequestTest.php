@@ -23,7 +23,7 @@ class HttpRequestTest extends \PHPUnit_Framework_TestCase
     public function testBase(ServerData $requestData, $expected)
     {
         $request = new HttpRequest($requestData);
-        $this->assertEquals($expected, $request->getBaseUrl());
+        $this->assertEquals($expected, $request->getBase());
     }
 
     public function providerBaseUrl()
@@ -57,5 +57,14 @@ class HttpRequestTest extends \PHPUnit_Framework_TestCase
         return (new ServerData())
             ->setScriptName("/pub/index.php")
             ->setRequestUrl($url);
+    }
+
+    public function testGettingParameters()
+    {
+        $serverData = $this->defaultData("/pub/index/xcxc/cxxcxcxc/?fdfd=1/pub/");
+        $request = new HttpRequest($serverData);
+        $this->assertEquals("index", $request->getParameter(0));
+        $this->assertEquals("cxxcxcxc", $request->getParameter(2));
+        $this->assertEquals(null, $request->getParameter(20));
     }
 }
