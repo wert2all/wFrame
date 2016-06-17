@@ -67,6 +67,7 @@ class HttpRequestTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals("xcxc", $request->getParameter(0));
         $this->assertEquals("cxxcxcxc", $request->getParameter(1));
-        $this->assertEquals(null, $request->getParameter(20));
+        $this->assertEquals(null, $request->getParameter(2));
+        $this->assertEquals(2, $request->getParametersCount());
     }
 }

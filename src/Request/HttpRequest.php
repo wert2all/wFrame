@@ -16,9 +16,9 @@ class HttpRequest implements IRequest
 {
     /** @var Get */
     protected $get;
-    /** @var  ArrayObject */
+    /** @var  array */
     protected $baseArray;
-    /** @var  ArrayObject */
+    /** @var  array */
     protected $otherUrlArray;
 
     /**
@@ -28,7 +28,7 @@ class HttpRequest implements IRequest
     public function __construct(ServerData $serverDataValue)
     {
         $this->baseArray = new ArrayObject();
-        $this->otherUrlArray = new ArrayObject();
+        $this->otherUrlArray = array();
 
         $this->makeBaseUrl(
             $this->removeGet($serverDataValue->getRequestUrl()),
@@ -59,7 +59,8 @@ class HttpRequest implements IRequest
             $serverIterator->next();
             $counter++;
         }
-        $this->otherUrlArray = new ArrayObject(
+
+        $this->otherUrlArray = $this->deleteNullElements(
             array_slice($url, $this->baseArray->count(), count($url))
         );
     }
@@ -71,6 +72,16 @@ class HttpRequest implements IRequest
     private function splitUrl($url)
     {
         return explode("/", $url);
+    }
+
+    protected function deleteNullElements(array  $otherUrlArray)
+    {
+        foreach ($otherUrlArray as $key => $item) {
+            if (is_null($item) or $item == "") {
+                return array_slice($otherUrlArray, 0, $key);
+            }
+        }
+        return $otherUrlArray;
     }
 
     private function removeGet($requestURL)
@@ -107,5 +118,13 @@ class HttpRequest implements IRequest
     public function getParameter($index)
     {
         return isset($this->otherUrlArray[(int)$index]) ? $this->otherUrlArray[(int)$index] : null;
+    }
+
+    /**
+     * @return int
+     */
+    public function getParametersCount()
+    {
+        return count($this->otherUrlArray);
     }
 }
