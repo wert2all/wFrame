@@ -21,4 +21,9 @@ interface IRequest
      * @return mixed
      */
     public function getParameter($index);
+
+    /**
+     * @return integer
+     */
+    public function getParametersCount();
 }
