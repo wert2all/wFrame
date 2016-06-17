@@ -34,4 +34,12 @@ class Error404 extends AbstractController implements IController
     {
         echo "404";
     }
+
+    /**
+     * @return string
+     */
+    protected function getControllerUrl()
+    {
+        return "404";
+    }
 }
